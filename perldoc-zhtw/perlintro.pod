@@ -29,16 +29,16 @@ Perl不同的定義被寫在 perl 和 perlfaq1 ，也不可能在其它的地方
 
 =head2 Running Perl programs
 
-To run a Perl program from the Unix command line:
+利用 Unix 指令來執行 Perl 的程式的方法：
 
     perl progname.pl
 
-Alternatively, put this as the first line of your script:
+另外，你也可以改用另一種方法，這下面這段文字複製到你程式的第一行：
 
     #!/usr/bin/env perl
 
-... and run the script as C</path/to/script.pl>.  Of course, it'll need
-to be executable first, so C<chmod 755 script.pl> (under Unix).
+... 然後以 C</path/to/script.pl> 的方式來執行程式. 當然也別忘了要設定權限，
+為了要能夠讓它可以執行, 在 Unix 下記得使用 C<chmod 755 script.pl> 來加入可執行的權限。
 
 (This start line assumes you have the B<env> program. You can also put
 directly the path to your perl executable, like in C<#!/usr/bin/perl>).
@@ -48,8 +48,8 @@ Windows and Mac OS, read L<perlrun>.
 
 =head2 Safety net
 
-Perl by default is very forgiving. In order to make it more robust
-it is recommended to start every program with the following lines:
+Perl 預設其實是一個很寬鬆的語言，如果你想讓它變得比較好用的話，
+我們建議你在每一個相關的 Perl 程式之前都加入以下幾行程式碼：
 
     #!/usr/bin/perl
     use strict;
@@ -65,43 +65,40 @@ and L<warnings>.
 
 =head2 Basic syntax overview
 
-A Perl script or program consists of one or more statements.  These
-statements are simply written in the script in a straightforward
-fashion.  There is no need to have a C<main()> function or anything of
-that kind.
+一個 Perl 的腳本或是程式是包含許多敘述句的，這些敘述句都是以簡單易懂的風格
+寫在腳本內的，也沒有必要加入 C<main()> 或是其他和他有關的東西。
 
-Perl statements end in a semi-colon:
+Perl 敘述句都是以 ; 為結尾的，
 
     print "Hello, world";
 
-Comments start with a hash symbol and run to the end of the line
+註解則是由井字號（#）為開頭並結束於行尾。
 
     # This is a comment
 
-Whitespace is irrelevant:
+空白則是無關緊要的。
 
     print
         "Hello, world"
         ;
 
-... except inside quoted strings:
+... 除非這些空白是被引述起來才需要特別注意。
 
     # this would print with a linebreak in the middle
     print "Hello
     world";
 
-Double quotes or single quotes may be used around literal strings:
+雙引號或是單引號則是用來包住字面上的字串用的：
 
     print "Hello, world";
     print 'Hello, world';
 
-However, only double quotes "interpolate" variables and special
-characters such as newlines (C<\n>):
+然而，只有雙引號具有變數置換的功能，例如說你可以插入特殊的字元如換行（C<\n>）：
 
     print "Hello, $name\n";     # works fine
     print 'Hello, $name\n';     # prints $name\n literally
 
-Numbers don't need quotes around them:
+而數字則不需要被引號包住：
 
     print 42;
 
